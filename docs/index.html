@@ -1,0 +1,443 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ascension RE Docs Portal</title>
+  <style>
+    :root {
+      --bg: #0b1020;
+      --panel: #11182e;
+      --panel-2: #0f1630;
+      --text: #e6ecff;
+      --muted: #9fb0d9;
+      --accent: #6aa2ff;
+      --accent-2: #79f0d7;
+      --border: #223059;
+      --ok: #7ee787;
+      --warn: #ffd580;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Inter, Segoe UI, Roboto, Arial, sans-serif;
+      color: var(--text);
+      background: linear-gradient(180deg, #0a0f1d, #0b1020 30%, #090e1c);
+      height: 100vh;
+      display: grid;
+      grid-template-columns: 360px 1fr;
+      overflow: hidden;
+    }
+
+    .sidebar {
+      border-right: 1px solid var(--border);
+      background: linear-gradient(180deg, var(--panel), var(--panel-2));
+      display: flex;
+      flex-direction: column;
+      min-width: 320px;
+    }
+
+    .header {
+      padding: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .title {
+      margin: 0;
+      font-size: 1.05rem;
+      font-weight: 700;
+      letter-spacing: 0.2px;
+    }
+
+    .subtitle {
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 0.87rem;
+      line-height: 1.35;
+    }
+
+    .search-wrap {
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .search {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: #0c1430;
+      color: var(--text);
+      outline: none;
+    }
+
+    .search:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 2px rgba(106, 162, 255, 0.18);
+    }
+
+    .list {
+      overflow: auto;
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .group {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      background: rgba(255,255,255,0.02);
+    }
+
+    .group-title {
+      margin: 0;
+      padding: 10px 12px;
+      font-size: 0.85rem;
+      letter-spacing: 0.3px;
+      text-transform: uppercase;
+      color: var(--accent-2);
+      border-bottom: 1px solid var(--border);
+      background: rgba(121,240,215,0.06);
+    }
+
+    .item {
+      width: 100%;
+      border: 0;
+      border-bottom: 1px solid rgba(34, 48, 89, 0.5);
+      background: transparent;
+      text-align: left;
+      color: var(--text);
+      padding: 10px 12px;
+      cursor: pointer;
+      display: grid;
+      gap: 4px;
+    }
+
+    .item:last-child { border-bottom: 0; }
+
+    .item:hover { background: rgba(106, 162, 255, 0.09); }
+
+    .item.active {
+      background: rgba(106, 162, 255, 0.18);
+      outline: 1px solid rgba(106, 162, 255, 0.3);
+    }
+
+    .item-name {
+      font-size: 0.92rem;
+      font-weight: 600;
+      line-height: 1.2;
+    }
+
+    .item-path {
+      font-size: 0.76rem;
+      color: var(--muted);
+      line-height: 1.2;
+    }
+
+    .main {
+      display: grid;
+      grid-template-rows: auto 1fr;
+      overflow: hidden;
+    }
+
+    .toolbar {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border-bottom: 1px solid var(--border);
+      padding: 12px 16px;
+      background: rgba(15, 22, 48, 0.85);
+      backdrop-filter: blur(3px);
+    }
+
+    .pill {
+      font-size: 0.76rem;
+      padding: 3px 8px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      background: #0e1633;
+    }
+
+    .path {
+      font-size: 0.86rem;
+      color: var(--muted);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .content {
+      overflow: auto;
+      padding: 22px 28px 60px;
+      line-height: 1.65;
+    }
+
+    .welcome {
+      max-width: 900px;
+      border: 1px solid var(--border);
+      background: rgba(126, 231, 135, 0.05);
+      border-radius: 14px;
+      padding: 18px;
+    }
+
+    .welcome h2 { margin-top: 0; }
+    .welcome code {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.08);
+      padding: 2px 6px;
+      border-radius: 6px;
+    }
+
+    pre {
+      overflow: auto;
+      background: #0b132d;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 12px;
+    }
+
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.9em;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin: 14px 0;
+      font-size: 0.92rem;
+    }
+
+    th, td {
+      border: 1px solid var(--border);
+      padding: 8px;
+      text-align: left;
+    }
+
+    th { background: rgba(106,162,255,0.09); }
+
+    blockquote {
+      border-left: 4px solid var(--accent);
+      margin: 12px 0;
+      padding: 6px 12px;
+      color: #c9d7ff;
+      background: rgba(106,162,255,0.07);
+    }
+
+    a { color: #8fc4ff; }
+
+    .status-ok { color: var(--ok); }
+    .status-warn { color: var(--warn); }
+
+    @media (max-width: 1000px) {
+      body {
+        grid-template-columns: 1fr;
+        grid-template-rows: 45vh 55vh;
+      }
+      .sidebar { min-width: 0; }
+    }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="header">
+      <h1 class="title">Ascension RE Docs Portal</h1>
+      <div class="subtitle">Unified HTML view for architecture, anti-cheat, protocol, and report documents.</div>
+    </div>
+    <div class="search-wrap">
+      <input id="search" class="search" type="text" placeholder="Filter docs by name/path..." />
+    </div>
+    <div id="list" class="list"></div>
+  </aside>
+
+  <main class="main">
+    <div class="toolbar">
+      <span class="pill">HTML Navigator</span>
+      <span id="docPath" class="path">Select a document to render</span>
+    </div>
+    <section id="content" class="content">
+      <div class="welcome">
+        <h2>Documentation is getting big — now it’s browsable. 🚀</h2>
+        <p>
+          This portal renders your markdown reports as HTML in one place. It’s ideal for fast navigation across
+          anti-cheat state logic, known patterns, false positives, and architecture writeups.
+        </p>
+        <ul>
+          <li><strong>Left pane:</strong> document groups + quick filter</li>
+          <li><strong>Right pane:</strong> rendered markdown content</li>
+          <li><strong>Tip:</strong> open from VS Code preview or a local static server for best experience</li>
+        </ul>
+        <p class="status-ok"><strong>Included:</strong> Top-level docs + selected <code>reports/*.md</code> files.</p>
+        <p class="status-warn"><strong>Note:</strong> If browser blocks local file fetching, use VS Code preview or serve the folder.</p>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const docs = [
+      {
+        group: "Top-level Research",
+        items: [
+          "../README.md",
+          "../RESEARCH_GUIDE.md",
+          "../LIVE_MCP_ANALYSIS_FINAL_REPORT.md",
+          "../ANALYSIS_COMPLETE_SUMMARY.md",
+          "../ANALYSIS_TOOLKIT_REFERENCE.md",
+          "../GAME_RE_QUICKSTART.md",
+          "../GAME_RE_DESIGN.md"
+        ]
+      },
+      {
+        group: "Anti-Cheat Deep Dives",
+        items: [
+          "../ANTICHEEAT_STATE_MACHINE.md",
+          "../ANTICHEEAT_DEEP_ANALYSIS.md",
+          "../ANTICHEEAT_SIGNATURES.md",
+          "../ANTICHEEAT_EVASION_ANALYSIS.md",
+          "../ANTICHEEAT_LEGITIMATE_TOOL_CONFLICTS.md"
+        ]
+      },
+      {
+        group: "Reports Folder",
+        items: [
+          "../reports/000_MASTER_ANALYSIS_SUMMARY.md",
+          "../reports/README.md",
+          "../reports/MASTER_DOCUMENTATION.md",
+          "../reports/COMPREHENSIVE_RE_REPORT.md",
+          "../reports/COMPREHENSIVE_ANALYSIS.md",
+          "../reports/ADDRESS_INDEX.md",
+          "../reports/CRITICAL_FUNCTIONS.md",
+          "../reports/NETWORK_PROTOCOL_ANALYSIS.md",
+          "../reports/OPCODE_ANALYSIS_PLAN.md",
+          "../reports/OPCODE_CORRELATION_STRATEGY.md",
+          "../reports/FUNCTION_DECOMPILATION_PREDICTIONS.md",
+          "../reports/STRING_ANALYSIS_DETAILED.md",
+          "../reports/SUBSYSTEM_MAPPING.md",
+          "../reports/VTABLE_ANALYSIS.md",
+          "../reports/BOT_RE_ROADMAP.md",
+          "../reports/ANALYSIS_INDEX.md"
+        ]
+      }
+    ];
+
+    async function loadGeneratedFunctionDocs() {
+      try {
+        const res = await fetch("../reports/function-docs/index.json", { cache: "no-store" });
+        if (!res.ok) return;
+        const manifest = await res.json();
+        if (!Array.isArray(manifest) || !manifest.length) return;
+
+        const items = manifest
+          .map((entry) => entry && entry.markdown)
+          .filter((v) => typeof v === "string" && v.endsWith(".md"));
+
+        if (!items.length) return;
+        docs.push({
+          group: "Generated Function Docs",
+          items,
+        });
+      } catch (_) {
+        // Optional section: ignore if not present yet.
+      }
+    }
+
+    const listEl = document.getElementById("list");
+    const contentEl = document.getElementById("content");
+    const pathEl = document.getElementById("docPath");
+    const searchEl = document.getElementById("search");
+
+    let selectedButton = null;
+
+    function mdOptions() {
+      marked.setOptions({
+        gfm: true,
+        breaks: false,
+        mangle: false,
+        headerIds: true
+      });
+    }
+
+    function friendlyName(path) {
+      const name = path.split("/").pop() || path;
+      return name.replace(/\.md$/i, "");
+    }
+
+    async function loadDoc(path) {
+      pathEl.textContent = path;
+      try {
+        const res = await fetch(path, { cache: "no-store" });
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const md = await res.text();
+        contentEl.innerHTML = marked.parse(md);
+        contentEl.scrollTop = 0;
+      } catch (err) {
+        contentEl.innerHTML = `
+          <div class="welcome" style="border-color:#6b3f00;background:rgba(255,165,0,0.08)">
+            <h2>Could not load <code>${path}</code></h2>
+            <p><strong>Error:</strong> ${String(err.message || err)}</p>
+            <p>This usually means local file fetch is restricted in your current viewer.</p>
+            <ul>
+              <li>Use VS Code Markdown/HTML preview, or</li>
+              <li>Serve the workspace folder with a local static server.</li>
+            </ul>
+          </div>
+        `;
+      }
+    }
+
+    function matchesFilter(value, path) {
+      if (!value) return true;
+      const q = value.trim().toLowerCase();
+      return path.toLowerCase().includes(q) || friendlyName(path).toLowerCase().includes(q);
+    }
+
+    function renderList() {
+      const q = searchEl.value;
+      listEl.innerHTML = "";
+
+      for (const group of docs) {
+        const filtered = group.items.filter((p) => matchesFilter(q, p));
+        if (!filtered.length) continue;
+
+        const groupEl = document.createElement("section");
+        groupEl.className = "group";
+
+        const title = document.createElement("h2");
+        title.className = "group-title";
+        title.textContent = group.group;
+
+        groupEl.appendChild(title);
+
+        for (const path of filtered) {
+          const btn = document.createElement("button");
+          btn.className = "item";
+          btn.type = "button";
+          btn.innerHTML = `
+            <span class="item-name">${friendlyName(path)}</span>
+            <span class="item-path">${path}</span>
+          `;
+          btn.addEventListener("click", () => {
+            if (selectedButton) selectedButton.classList.remove("active");
+            selectedButton = btn;
+            selectedButton.classList.add("active");
+            loadDoc(path);
+          });
+          groupEl.appendChild(btn);
+        }
+
+        listEl.appendChild(groupEl);
+      }
+    }
+
+    mdOptions();
+    loadGeneratedFunctionDocs().finally(renderList);
+    searchEl.addEventListener("input", renderList);
+  </script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+# Runtime/generated analysis output
+reports/
+analysis-output.txt
+mcp-output.log
+
+# Local datasets / binaries / reverse-engineering artifacts
+data/
+samples/
+sample_target/
+*.exe
+*.dll
+*.rep
+
+# Python
+.venv/
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# OS/editor noise
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

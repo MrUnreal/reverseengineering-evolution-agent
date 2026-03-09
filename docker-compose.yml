@@ -1,0 +1,106 @@
+services:
+  ghidra-api:
+    image: biniamfd/ghidra-headless-rest:latest
+    container_name: ghidra-api
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./data:/data/ghidra_projects
+    restart: unless-stopped
+
+  re-runner:
+    build:
+      context: ./runner
+      dockerfile: Dockerfile
+    container_name: re-runner
+    depends_on:
+      - ghidra-api
+    environment:
+      GHIDRA_API_BASE: http://ghidra-api:9090
+      INPUT_DIR: /samples
+      OUTPUT_DIR: /reports
+      POLL_INTERVAL_SECONDS: "5"
+      TIMEOUT_SECONDS: "3600"
+      MIN_STRING_LENGTH: "6"
+      MAX_DECOMPILE_FUNCTIONS: "30"
+      TARGET_FILENAME: ""
+    volumes:
+      - ./samples:/samples:ro
+      - ./reports:/reports
+    command: ["python", "/app/run_full_re.py"]
+    restart: "no"
+
+  ghidrassist-mcp:
+    profiles: ["mcp"]
+    build:
+      context: .
+      dockerfile: mcp-headless/Dockerfile
+    container_name: ghidrassist-mcp
+    ports:
+      - "8080:8080"
+    environment:
+      TARGET_FILENAME: Ascension.exe
+      PROJECT_NAME: ascension_project
+      IMPORT_BASENAME: Ascension.exe
+      MCP_HOST: 0.0.0.0
+      MCP_PORT: "8080"
+      WAIT_SECONDS: "1800"
+    volumes:
+      - ./sample_target:/samples:ro
+      - ./data:/data/ghidra_projects
+    restart: "no"
+
+  mcp-runner:
+    profiles: ["mcp"]
+    build:
+      context: .
+      dockerfile: mcp-runner/Dockerfile
+    container_name: mcp-runner
+    depends_on:
+      - ghidrassist-mcp
+    environment:
+      MCP_BASE: http://ghidrassist-mcp:8080
+      OUTPUT_DIR: /reports
+      PROGRAM_NAME: Ascension.exe
+      TIMEOUT_SECONDS: "1200"
+      POLL_INTERVAL_SECONDS: "3"
+      QUESTIONS: "entrypoint candidate||network indicators||suspicious strings"
+    volumes:
+      - ./reports:/reports
+    restart: "no"
+
+  mcp-ui:
+    profiles: ["mcp"]
+    build:
+      context: .
+      dockerfile: streamlit-ui/Dockerfile
+    container_name: mcp-ui
+    depends_on:
+      - ghidrassist-mcp
+    environment:
+      MCP_BASE: http://ghidrassist-mcp:8080
+      PROGRAM_NAME: Ascension.exe
+      UI_MODE: app_game_re
+    ports:
+      - "8501:8501"
+    volumes:
+      - ./reports:/reports:ro
+      - ./samples:/samples
+    restart: unless-stopped
+
+  game-re-agent:
+    profiles: ["game-re"]
+    build:
+      context: .
+      dockerfile: agent-runner/Dockerfile
+    container_name: game-re-agent
+    depends_on:
+      - ghidrassist-mcp
+    environment:
+      MCP_BASE: http://ghidrassist-mcp:8080
+      ANALYSIS_BUDGET: "500"
+      OUTPUT_DIR: /reports/game-sdk
+    volumes:
+      - ./samples/game:/samples/game:ro
+      - ./reports:/reports
+    restart: "no"
