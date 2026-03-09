@@ -8,6 +8,10 @@ This project contains **416 KB of comprehensive analysis documentation**, **22 s
 
 ## 🚀 Quick Navigation
 
+### I want the active roadmap + testing board
+→ **[ROADMAP_AND_TESTING_BOARD.md](ROADMAP_AND_TESTING_BOARD.md)**  
+Live execution links for issues #1–#8 (CLI unification, schema, CI, regression, dashboard contracts, demo growth loop)
+
 ### I want to understand the architecture
 → **[ARCHITECTURE_SYNTHESIS.md](reports/ARCHITECTURE_SYNTHESIS.md)** ⭐ START HERE  
 Complete tier-by-tier breakdown of all subsystems (15 pages, highly readable)
