@@ -247,8 +247,8 @@
 <body>
   <aside class="sidebar">
     <div class="header">
-      <h1 class="title">Ascension RE Docs Portal</h1>
-      <div class="subtitle">Unified HTML view for architecture, anti-cheat, protocol, and report documents.</div>
+      <h1 class="title">RE Evolution Docs Portal</h1>
+      <div class="subtitle">Unified HTML view for guides, operations, strategy, and selected reports.</div>
     </div>
     <div class="search-wrap">
       <input id="search" class="search" type="text" placeholder="Filter docs by name/path..." />
@@ -273,7 +273,7 @@
           <li><strong>Right pane:</strong> rendered markdown content</li>
           <li><strong>Tip:</strong> open from VS Code preview or a local static server for best experience</li>
         </ul>
-        <p class="status-ok"><strong>Included:</strong> Top-level docs + selected <code>reports/*.md</code> files.</p>
+        <p class="status-ok"><strong>Included:</strong> Curated project docs + stable tracked artifacts.</p>
         <p class="status-warn"><strong>Note:</strong> If browser blocks local file fetching, use VS Code preview or serve the folder.</p>
       </div>
     </section>
@@ -282,46 +282,42 @@
   <script>
     const docs = [
       {
-        group: "Top-level Research",
+        group: "Project Entry",
         items: [
           "../README.md",
-          "../RESEARCH_GUIDE.md",
-          "../LIVE_MCP_ANALYSIS_FINAL_REPORT.md",
-          "../ANALYSIS_COMPLETE_SUMMARY.md",
-          "../ANALYSIS_TOOLKIT_REFERENCE.md",
-          "../GAME_RE_QUICKSTART.md",
-          "../GAME_RE_DESIGN.md"
+          "../CONTRIBUTING.md",
+          "./README.md"
         ]
       },
       {
-        group: "Anti-Cheat Deep Dives",
+        group: "Guides",
         items: [
-          "../ANTICHEEAT_STATE_MACHINE.md",
-          "../ANTICHEEAT_DEEP_ANALYSIS.md",
-          "../ANTICHEEAT_SIGNATURES.md",
-          "../ANTICHEEAT_EVASION_ANALYSIS.md",
-          "../ANTICHEEAT_LEGITIMATE_TOOL_CONFLICTS.md"
+          "./guides/GAME_RE_QUICKSTART.md",
+          "./guides/GAME_RE_DESIGN.md",
+          "./guides/RESEARCH_GUIDE.md"
         ]
       },
       {
-        group: "Reports Folder",
+        group: "Operations",
         items: [
-          "../reports/000_MASTER_ANALYSIS_SUMMARY.md",
-          "../reports/README.md",
-          "../reports/MASTER_DOCUMENTATION.md",
-          "../reports/COMPREHENSIVE_RE_REPORT.md",
-          "../reports/COMPREHENSIVE_ANALYSIS.md",
-          "../reports/ADDRESS_INDEX.md",
-          "../reports/CRITICAL_FUNCTIONS.md",
-          "../reports/NETWORK_PROTOCOL_ANALYSIS.md",
-          "../reports/OPCODE_ANALYSIS_PLAN.md",
-          "../reports/OPCODE_CORRELATION_STRATEGY.md",
-          "../reports/FUNCTION_DECOMPILATION_PREDICTIONS.md",
-          "../reports/STRING_ANALYSIS_DETAILED.md",
-          "../reports/SUBSYSTEM_MAPPING.md",
-          "../reports/VTABLE_ANALYSIS.md",
-          "../reports/BOT_RE_ROADMAP.md",
-          "../reports/ANALYSIS_INDEX.md"
+          "./operations/ROADMAP_AND_TESTING_BOARD.md",
+          "./operations/PHASE_1_QUICK_REFERENCE.md",
+          "./operations/PHASE_1_COMPLETION_SUMMARY.md"
+        ]
+      },
+      {
+        group: "Strategy",
+        items: [
+          "./strategy/RE_RESEARCH_RULES.md",
+          "./strategy/VIRAL_RE_GAME_AGENT_STRATEGY.md",
+          "./strategy/REPO_CLEANUP_AND_EVOLUTION_PLAN.md"
+        ]
+      },
+      {
+        group: "Examples & Schemas",
+        items: [
+          "./examples/findings.sample.v1.json",
+          "../schemas/findings.v1.schema.json"
         ]
       }
     ];

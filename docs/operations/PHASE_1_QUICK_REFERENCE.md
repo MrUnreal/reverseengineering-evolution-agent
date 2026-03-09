@@ -3,19 +3,19 @@
 ## View Key Reports
 
 📊 **Interactive Dashboards:**
-- [Local Analysis Dashboard](docs/local-analysis-dashboard.html) → Memory layout, execution flows, data structures
-- [Callgraph Dashboard](docs/callgraph-dashboard.html) → Function relationships  
-- [Navigation Index](docs/index.html) → Portal to all tools
+- [Local Analysis Dashboard](../local-analysis-dashboard.html) → Memory layout, execution flows, data structures
+- [Callgraph Dashboard](../callgraph-dashboard.html) → Function relationships  
+- [Navigation Index](../index.html) → Portal to all tools
 
 📄 **Comprehensive Reports:**
-- [PHASE_1_COMPLETION_SUMMARY.md](PHASE_1_COMPLETION_SUMMARY.md) → Complete overview
-- [PHASE_2_SYNTHESIS_REPORT.md](reports/PHASE_2_SYNTHESIS_REPORT.md) → Confidence projections & Phase 2 plan
-- [ITERATION_2_COMPLETE_ANALYSIS.md](reports/ITERATION_2_COMPLETE_ANALYSIS.md) → Hypothesis validation details
+- [PHASE_1_COMPLETION_SUMMARY.md](./PHASE_1_COMPLETION_SUMMARY.md) → Complete overview
+- [PHASE_2_SYNTHESIS_REPORT.md](../../reports/PHASE_2_SYNTHESIS_REPORT.md) → Confidence projections & Phase 2 plan
+- [ITERATION_2_COMPLETE_ANALYSIS.md](../../reports/ITERATION_2_COMPLETE_ANALYSIS.md) → Hypothesis validation details
 
 ## Research Framework
 
 📚 **28 Research Principles:**
-- [RE_RESEARCH_RULES.md](RE_RESEARCH_RULES.md) → Adapted from MrUnreal/agent-rules for reverse engineering
+- [RE_RESEARCH_RULES.md](../strategy/RE_RESEARCH_RULES.md) → Adapted from MrUnreal/agent-rules for reverse engineering
 
 ## Key Findings
 
@@ -181,8 +181,8 @@
 - `mcp-runner/phase_2_synthesis.py` (executed)
 
 ### Documentation
-- `PHASE_1_COMPLETION_SUMMARY.md` (comprehensive overview)
-- `RE_RESEARCH_RULES.md` (28 adapted principles)
+- `docs/operations/PHASE_1_COMPLETION_SUMMARY.md` (comprehensive overview)
+- `docs/strategy/RE_RESEARCH_RULES.md` (28 adapted principles)
 
 ### Dashboards
 - `docs/local-analysis-dashboard.html` (33 KB, interactive)
@@ -192,9 +192,9 @@
 ## Next Actions
 
 ### Immediate
-1. Review [PHASE_1_COMPLETION_SUMMARY.md](PHASE_1_COMPLETION_SUMMARY.md)
+1. Review [PHASE_1_COMPLETION_SUMMARY.md](./PHASE_1_COMPLETION_SUMMARY.md)
 2. Explore interactive dashboards in `docs/`
-3. Read [RE_RESEARCH_RULES.md](RE_RESEARCH_RULES.md) for methodology
+3. Read [RE_RESEARCH_RULES.md](../strategy/RE_RESEARCH_RULES.md) for methodology
 
 ### Phase 2 (When Ready)
 1. Resolve MCP API connectivity or use alternative approach

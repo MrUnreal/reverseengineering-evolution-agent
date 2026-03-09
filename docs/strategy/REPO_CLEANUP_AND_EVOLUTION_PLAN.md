@@ -20,12 +20,12 @@ Created: `https://github.com/MrUnreal/reverseengineering-evolution-agent`
 
 ### Product docs (keep and consolidate over time)
 - `README.md`
-- `RE_RESEARCH_RULES.md`
-- `GAME_RE_DESIGN.md`
-- `GAME_RE_QUICKSTART.md`
-- `RESEARCH_GUIDE.md`
-- `PHASE_1_COMPLETION_SUMMARY.md`
-- `PHASE_1_QUICK_REFERENCE.md`
+- `docs/strategy/RE_RESEARCH_RULES.md`
+- `docs/guides/GAME_RE_DESIGN.md`
+- `docs/guides/GAME_RE_QUICKSTART.md`
+- `docs/guides/RESEARCH_GUIDE.md`
+- `docs/operations/PHASE_1_COMPLETION_SUMMARY.md`
+- `docs/operations/PHASE_1_QUICK_REFERENCE.md`
 
 ### Infra and reproducibility
 - `docker-compose.yml`
@@ -102,10 +102,10 @@ These are useful historically but should be moved into a versioned `archive/docs
 
 ## Practical Next Actions
 
-1. Initialize git in this workspace and set remote to the newly created repository.
-2. Commit only product code + curated docs (exclude local/binary/output artifacts).
-3. Add a release tag `v0.1-foundation` once first clean push lands.
-4. Track evolution milestones in GitHub issues with labels:
+1. Publish `v0.1-foundation` tag now that clean baseline is live.
+2. Keep root minimal; place all long-form docs under `docs/guides`, `docs/operations`, and `docs/strategy`.
+3. Advance roadmap issues #1–#8 in execution order (CLI, schema, CI, tests, growth loop).
+4. Track milestones in GitHub issues with labels:
    - `core-engine`
    - `dashboard`
    - `growth-loop`

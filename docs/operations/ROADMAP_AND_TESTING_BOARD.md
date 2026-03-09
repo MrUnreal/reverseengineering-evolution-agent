@@ -29,7 +29,7 @@ This is the execution board for the polished evolution pass.
 
 ---
 
-## Iteration Rules Applied (from `RE_RESEARCH_RULES.md`)
+## Iteration Rules Applied (from `../strategy/RE_RESEARCH_RULES.md`)
 
 - **Rule 2 (Plan first):** Work is decomposed into scoped issues with acceptance criteria.
 - **Rule 3 (Verify with signals):** Testing issues explicitly enforce confidence and schema checks.

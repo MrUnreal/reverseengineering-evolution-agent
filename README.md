@@ -56,14 +56,16 @@ Ascension is a **demonstration target**, not the product definition.
 
 ## Quick start (practical)
 
+0. Browse the docs hub:  
+   **[`docs/README.md`](docs/README.md)**
 1. Read the execution board:  
-   **[`ROADMAP_AND_TESTING_BOARD.md`](ROADMAP_AND_TESTING_BOARD.md)**
+   **[`docs/operations/ROADMAP_AND_TESTING_BOARD.md`](docs/operations/ROADMAP_AND_TESTING_BOARD.md)**
 2. Explore visual outputs:  
    **[`docs/local-analysis-dashboard.html`](docs/local-analysis-dashboard.html)**
 3. Run schema validation smoke:  
    `python mcp-runner/validate_findings_schema.py --schema schemas/findings.v1.schema.json --file docs/examples/findings.sample.v1.json`
 4. Review strategy direction:  
-   **[`VIRAL_RE_GAME_AGENT_STRATEGY.md`](VIRAL_RE_GAME_AGENT_STRATEGY.md)**
+   **[`docs/strategy/VIRAL_RE_GAME_AGENT_STRATEGY.md`](docs/strategy/VIRAL_RE_GAME_AGENT_STRATEGY.md)**
 
 ---
 
@@ -97,7 +99,7 @@ This project follows a strict iteration discipline:
 - reusable assets over one-off analysis
 - productized outputs over raw notes
 
-See: **[`RE_RESEARCH_RULES.md`](RE_RESEARCH_RULES.md)**
+See: **[`docs/strategy/RE_RESEARCH_RULES.md`](docs/strategy/RE_RESEARCH_RULES.md)**
 
 ---
 
@@ -105,3 +107,9 @@ See: **[`RE_RESEARCH_RULES.md`](RE_RESEARCH_RULES.md)**
 
 This repository is for **defensive security research, binary understanding, and education**.
 No exploit tooling, cheating automation, or harmful use is supported.
+
+---
+
+## Contributing
+
+See **[`CONTRIBUTING.md`](CONTRIBUTING.md)** for contribution standards and quality checks.

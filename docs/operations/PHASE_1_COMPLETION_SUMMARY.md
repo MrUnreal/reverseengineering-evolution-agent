@@ -163,7 +163,7 @@ FUN_00401010 (WinMain, ~5000 bytes)
 ### Code Artifacts
 | File | Lines | Purpose | Status |
 |------|-------|---------|--------|
-| `RE_RESEARCH_RULES.md` | 450+ | 28 research rules adapted for reverse engineering | ✅ Complete |
+| `docs/strategy/RE_RESEARCH_RULES.md` | 450+ | 28 research rules adapted for reverse engineering | ✅ Complete |
 | `local_deep_analyzer.py` | 700 | Offline structural analysis tool | ✅ Executed |
 | `iterative_deep_analyzer.py` | 500+ | Hypothesis validation framework | ✅ Executed |
 | `phase_2_executor.py` | 400+ | Phase 2 execution template | ✅ Created |
@@ -179,7 +179,7 @@ FUN_00401010 (WinMain, ~5000 bytes)
 
 ---
 
-## Learnings & Principles (RE_RESEARCH_RULES.md)
+## Learnings & Principles (`docs/strategy/RE_RESEARCH_RULES.md`)
 
 Phase 1 research was systematized using 28 universal coding principles adapted from MrUnreal/agent-rules:
 
@@ -260,7 +260,7 @@ Phase 3 (Runtime/fuzzing):   95%+ (full protocol reverse, memory validation)
 
 ### Post-Phase 2
 - Generate 85-90% confidence architectural model
-- Update RE_RESEARCH_RULES.md with new learnings
+- Update `docs/strategy/RE_RESEARCH_RULES.md` with new learnings
 - Plan Phase 3 (runtime analysis / fuzzing)
 
 ---
@@ -296,7 +296,7 @@ F:\Projects\ReverseEngineering\
 │   ├── iterative_deep_analyzer.py         [Phase 1 tool - EXECUTED]
 │   ├── phase_2_executor.py                [Phase 2 template]
 │   └── phase_2_synthesis.py               [Phase 2 planning - EXECUTED]
-├── RE_RESEARCH_RULES.md                   [28 research principles]
+├── docs/strategy/RE_RESEARCH_RULES.md     [28 research principles]
 └── README.md                              [Project documentation]
 ```
 
@@ -308,7 +308,7 @@ Phase 1 has established a solid 70% understanding of Ascension.exe architecture.
 
 The key insight is that **offline analysis reaches a predictable ~70% ceiling**. Further progress requires live tools (Ghidra decompiler, xref analysis, byte pattern search), which Phase 2 will provide.
 
-All artifacts are documented, dashboards are interactive, and the research framework (RE_RESEARCH_RULES.md) will guide future iterations.
+All artifacts are documented, dashboards are interactive, and the research framework (`docs/strategy/RE_RESEARCH_RULES.md`) will guide future iterations.
 
 ---
 
