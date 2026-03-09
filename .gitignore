@@ -24,3 +24,20 @@ __pycache__/
 Thumbs.db
 .idea/
 .vscode/
+
+# Legacy one-off documents/scripts (archival; not part of product surface)
+ANALYSIS_COMPLETE_MANIFEST.md
+ANALYSIS_COMPLETE_SUMMARY.md
+ANALYSIS_TOOLKIT_REFERENCE.md
+ITERATION_2_SUMMARY.md
+LIVE_MCP_ANALYSIS_FINAL_REPORT.md
+README_OLD_DOCKER_NOTES.md
+ANTICHEAT_DEEP_ANALYSIS.md
+ANTICHEAT_EVASION_ANALYSIS.md
+ANTICHEAT_LEGITIMATE_TOOL_CONFLICTS.md
+ANTICHEAT_SIGNATURES.md
+ANTICHEAT_STATE_MACHINE.md
+extract_ghidra_decomp.sh
+live_mcp_decompile.py
+mcp-proper-client.py
+ai-reverse-engineering/
