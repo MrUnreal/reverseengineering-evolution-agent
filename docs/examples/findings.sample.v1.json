@@ -1,0 +1,32 @@
+{
+  "schema_version": "findings.v1",
+  "generated_at": "2026-03-09T20:30:00Z",
+  "target": {
+    "name": "Ascension.exe",
+    "arch": "x86"
+  },
+  "summary": {
+    "starting_confidence": "40%",
+    "ending_confidence": "70%",
+    "notes": "Offline structural pass"
+  },
+  "findings": [
+    {
+      "id": "entry-0x00401000",
+      "title": "Program entry point",
+      "confidence": "CERTAIN",
+      "evidence": [
+        {
+          "signal_type": "address_locality",
+          "detail": "0x00401000 matches standard PE entry location",
+          "weight": 4
+        }
+      ],
+      "source": {
+        "tool": "iterative_deep_analyzer.py",
+        "artifact": "reports/ITERATION_2_COMPLETE_ANALYSIS.json"
+      },
+      "tags": ["startup", "entry", "pe"]
+    }
+  ]
+}

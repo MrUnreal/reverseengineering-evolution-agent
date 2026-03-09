@@ -48,6 +48,14 @@ This is the execution board for the polished evolution pass.
 - #2 Findings schema + validator
 - #5 CI smoke pipeline
 
+### ✅ Iteration Update (Mar 9, 2026)
+- Added root CI workflow: `.github/workflows/ci-smoke.yml`
+- Added canonical schema draft: `schemas/findings.v1.schema.json`
+- Added validator script: `mcp-runner/validate_findings_schema.py`
+- Added sample bundle: `docs/examples/findings.sample.v1.json`
+
+This begins implementation of issues **#2** and **#5**.
+
 ### Sprint B — Reliability (Week 2)
 - #6 Confidence calibration tests
 - #7 Golden regression suite

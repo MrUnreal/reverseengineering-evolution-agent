@@ -1,0 +1,26 @@
+name: CI Smoke
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Python syntax smoke
+        run: |
+          python -m compileall -q mcp-runner agent-runner runner structure-engine streamlit-ui
+
+      - name: Validate canonical findings sample
+        run: |
+          python mcp-runner/validate_findings_schema.py --schema schemas/findings.v1.schema.json --file docs/examples/findings.sample.v1.json

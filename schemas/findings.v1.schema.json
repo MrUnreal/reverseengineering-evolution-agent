@@ -1,0 +1,87 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/MrUnreal/reverseengineering-evolution-agent/schemas/findings.v1.schema.json",
+  "title": "Reverse Engineering Findings Bundle v1",
+  "type": "object",
+  "required": ["schema_version", "generated_at", "target", "findings"],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "findings.v1"
+    },
+    "generated_at": {
+      "type": "string",
+      "description": "ISO8601 timestamp"
+    },
+    "target": {
+      "type": "object",
+      "required": ["name"],
+      "properties": {
+        "name": { "type": "string" },
+        "sha256": { "type": "string" },
+        "arch": { "type": "string" }
+      },
+      "additionalProperties": true
+    },
+    "summary": {
+      "type": "object",
+      "properties": {
+        "starting_confidence": { "type": "string" },
+        "ending_confidence": { "type": "string" },
+        "notes": { "type": "string" }
+      },
+      "additionalProperties": true
+    },
+    "findings": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "title", "confidence", "evidence", "source"],
+        "properties": {
+          "id": { "type": "string" },
+          "title": { "type": "string" },
+          "confidence": {
+            "type": "string",
+            "enum": ["CERTAIN", "HIGH", "MEDIUM", "LOW", "UNKNOWN"]
+          },
+          "evidence": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "required": ["signal_type", "detail"],
+              "properties": {
+                "signal_type": { "type": "string" },
+                "detail": { "type": "string" },
+                "weight": { "type": "number" }
+              },
+              "additionalProperties": true
+            }
+          },
+          "source": {
+            "type": "object",
+            "required": ["tool", "artifact"],
+            "properties": {
+              "tool": { "type": "string" },
+              "artifact": { "type": "string" },
+              "line_range": {
+                "type": "array",
+                "items": { "type": "integer" },
+                "minItems": 2,
+                "maxItems": 2
+              }
+            },
+            "additionalProperties": true
+          },
+          "tags": {
+            "type": "array",
+            "items": { "type": "string" }
+          }
+        },
+        "additionalProperties": true
+      }
+    }
+  },
+  "additionalProperties": true
+}
