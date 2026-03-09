@@ -1,0 +1,14 @@
+.antProperties.xml
+.classpath
+.gradle/
+.settings/
+bin/
+data/
+dist/
+build/
+lib/
+os/
+lucene/
+ghidrassist_analysis.db
+ghidrassist_rlhf.db
+.gitlab-ci.yml
